@@ -21,7 +21,8 @@ public class UnidadeSaudeDTO {
 			this.nome = u.getNome();
 			this.numeroPacientes = u.getNumeroPacientes();
 			this.data = u.getLocalDate();
-			this.atendimentos.addAll(u.getAtendimentos().stream().map(AtendimentoDTO::new).collect(Collectors.toList()));
+			//this.atendimentos.addAll(u.getAtendimentos().stream().map(AtendimentoDTO::new).collect(Collectors.toList()));
+			this.atendimentos.addAll(u.getAtendimentos().stream().map(AtendimentoDTO::new).filter(a -> a.getRealcionadoComPandemia()).collect(Collectors.toList()));
 			}
 	
 	public Long getId() {
