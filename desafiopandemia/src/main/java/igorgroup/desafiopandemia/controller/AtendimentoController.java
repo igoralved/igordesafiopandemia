@@ -42,7 +42,7 @@ public class AtendimentoController {
 	@GetMapping
 	@ResponseBody
 	public List<AtendimentoDTO> lista(){
-			List<Atendimento> lista = atendimentorepository.findAll();
+			List<Atendimento> lista = atendimentorepository.findAll().stream().filter(a -> a.getRealcionadoComPandemia()).toList();
 			return AtendimentoDTO.converter(lista);
 	}
 	
